@@ -25,4 +25,11 @@ public class UserService {
     public User getUserById(long id) {
         return users.get((int)id - 1);
     }
+
+    public String addUser(User newUser) {
+        long nextId = users.size() + 1;
+        newUser.setId(nextId);
+        users.add(newUser);
+        return ("Your ID: " + newUser.getId());
+    }
 }
