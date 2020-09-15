@@ -36,7 +36,13 @@ public class EducationService {
 
     public void addEdu(long id, Education education) {
         List<Education> oldEdus = educations.get(id);
-        oldEdus.add(education);
-        educations.put(id, oldEdus);
+        if (oldEdus == null) {
+            List<Education> newEdus = new ArrayList<>();
+            newEdus.add(education);
+            educations.put(id, newEdus);
+        } else {
+            oldEdus.add(education);
+            educations.put(id, oldEdus);
+        }
     }
 }
