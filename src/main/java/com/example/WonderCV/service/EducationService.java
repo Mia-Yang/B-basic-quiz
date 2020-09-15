@@ -1,7 +1,6 @@
 package com.example.WonderCV.service;
 
 import com.example.WonderCV.domain.Education;
-import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
