@@ -1,6 +1,7 @@
 package com.example.WonderCV.service;
 
 import com.example.WonderCV.domain.User;
+import com.example.WonderCV.exception.UserNotExistException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -23,6 +24,9 @@ public class UserService {
     }
 
     public User getUserById(long id) {
+        if (!users.stream().anyMatch(user -> user.getId() == id)) {
+            throw new UserNotExistException("该用户不存在");
+        }
         return users.get((int)id - 1);
     }
 
