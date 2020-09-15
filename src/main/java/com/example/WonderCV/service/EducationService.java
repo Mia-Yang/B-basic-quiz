@@ -34,4 +34,10 @@ public class EducationService {
     public List<Education> getEduById(long id) {
         return educations.get(id);
     }
+
+    public void addEdu(long id, Education education) {
+        List<Education> oldEdus = educations.get(id);
+        oldEdus.add(education);
+        educations.put(id, oldEdus);
+    }
 }

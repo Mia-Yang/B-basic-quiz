@@ -3,11 +3,10 @@ package com.example.WonderCV.api;
 import com.example.WonderCV.domain.Education;
 import com.example.WonderCV.service.EducationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -17,7 +16,14 @@ public class EducationController {
     EducationService educationService;
 
     @GetMapping("/{id}/educations")
+    @ResponseStatus(HttpStatus.OK)
     public List<Education> getEduById(@PathVariable long id) {
         return educationService.getEduById(id);
+    }
+
+    @PostMapping("/{id}/educations")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addEdu(@PathVariable long id, @RequestBody @Valid Education education) {
+        educationService.addEdu(id, education);
     }
 }
