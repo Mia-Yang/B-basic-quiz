@@ -10,10 +10,12 @@ import java.util.Map;
 
 @Service
 public class EducationService {
+    // GTB: 可以抽象出 Repository 专门用于存储 Education
     private Map<Long, List<Education>> educations = new HashMap<>();
     private long nextId = 1;
 
     public EducationService() {
+        // GTB: 通常不做这样的缩写：newEdus
         List<Education> newEdus = new ArrayList<>();
         Education education1 = Education.builder().description("Eos, explicabo, nam, tenetur et ab eius deserunt aspernatur ipsum ducimus quibusdam quis voluptatibus.")
                 .year(2005)
@@ -34,6 +36,7 @@ public class EducationService {
         return educations.get(id);
     }
 
+    // GTB: - 如果指定的 id 对应的用户不存在，怎么办？
     public void addEdu(long id, Education education) {
         List<Education> oldEdus = educations.get(id);
         if (oldEdus == null) {

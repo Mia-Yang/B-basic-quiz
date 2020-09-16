@@ -5,6 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+// GTB: - 请求数据不合法时的异常有处理吗？
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(UserNotExistException.class)

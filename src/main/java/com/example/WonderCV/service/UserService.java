@@ -11,6 +11,7 @@ import java.util.List;
 public class UserService {
     private List<User> users = new ArrayList<>();
 
+    // GTB: 不需要默认数据
     public UserService() {
        User newUser = User.builder()
                 .id(1)
